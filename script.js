@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         if (roles.length >= 2) {
             addMessageToChat('你好，这个怎么使用？', roles[1]); // 朋友发送
-            addMessageToChat('你可以通过右侧的控制面板添加角色和消息。', roles[0]); // 自己发送
+            addMessageToChat('你可以通过控制面板添加角色头像和消息。', roles[0]); // 自己发送
             addMessageToChat('明白了，谢谢！', roles[1]); // 朋友发送
         }
     }, 100); // 稍作延迟，确保角色渲染完成
