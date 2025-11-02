@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微信截图生成器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="wechat-mockup">
+            <div class="header">
+                <div class="header-top-row">
+                    <span class="header-time" id="header-time">17:51</span>
+                    <div class="status-icons">
+                        <span class="signal-icon"></span>
+                        <span class="network-type">4G</span>
+                        <span class="battery-icon"></span>
+                        <span class="battery-percentage">51</span>
+                    </div>
+                </div>
+                <div class="header-bottom-row">
+                    <span class="chat-title" id="chat-title">弹性环氧防水漆地坪及工程贺</span>
+                    <span class="more-options">...</span>
+                </div>
+            </div>
+            <div class="chat-area" id="chat-area">
+                <!-- 聊天消息和时间戳将在这里动态添加 -->
+                <template id="timestamp-template">
+                    <div class="timestamp">
+                        <span></span>
+                    </div>
+                </template>
+            </div>
+            <div class="footer-input-area">
+                <button class="voice-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                </button>
+                <input type="text" id="mockup-message-input" placeholder="输入消息...">
+                <button class="emoji-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+                </button>
+                <button class="plus-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="controls">
+            <h2>控制面板</h2>
+
+            <div class="control-section">
+                <h3>角色管理 <button id="add-role-button" class="small-button">添加角色</button></h3>
+                <div id="roles-list">
+                    <!-- 角色将在这里动态添加 -->
+                    <template id="role-item-template">
+                        <div class="role-item">
+                            <img src="https://dummyimage.com/30x30/000/fff&text=?" alt="头像" class="role-avatar-preview">
+                            <input type="text" class="role-name-input" placeholder="角色名称">
+                            <input type="file" class="role-avatar-upload" accept="image/*" style="display: none;">
+                            <button class="upload-avatar-button small-button">上传头像</button>
+                            <div class="role-actions">
+                                <button class="delete-role small-button">删除</button>
+                                <button class="select-role small-button">选择</button>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h3>消息设置</h3>
+                <div class="control-group">
+                    <label for="message-text">消息内容:</label>
+                    <input type="text" id="message-text">
+                </div>
+                <div class="control-group">
+                    <label for="message-sender">发送者:</label>
+                    <select id="message-sender">
+                        <!-- 角色将在这里动态添加 -->
+                    </select>
+                </div>
+                <button id="add-message">添加消息</button>
+            </div>
+
+            <div class="control-section">
+                <h3>操作</h3>
+                <div class="control-group">
+                    <label for="custom-header-time">顶部时间:</label>
+                    <input type="text" id="custom-header-time" placeholder="例如: 17:51">
+                </div>
+                <button id="clear-messages">清空消息</button>
+                <button id="generate-screenshot">生成截图</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
