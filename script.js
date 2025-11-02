@@ -69,7 +69,21 @@ document.addEventListener('DOMContentLoaded', () => {
             roleItem.dataset.roleId = role.id;
 
             const avatarImg = roleItem.querySelector('.role-avatar-preview');
-            avatarImg.src = role.avatar || `https://dummyimage.com/30x30/000/fff&text=${role.name.substring(0, 1)}`;
+            if (role.avatar) {
+                avatarImg.src = role.avatar;
+                avatarImg.textContent = '';
+                avatarImg.style.backgroundColor = '';
+                avatarImg.style.color = '';
+                avatarImg.style.textAlign = '';
+                avatarImg.style.lineHeight = '';
+            } else {
+                avatarImg.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'; // 透明1x1像素GIF
+                avatarImg.textContent = role.name.substring(0, 1); // 显示首字母
+                avatarImg.style.backgroundColor = '#ccc'; // 灰色背景
+                avatarImg.style.color = '#fff';
+                avatarImg.style.textAlign = 'center';
+                avatarImg.style.lineHeight = '30px';
+            }
             avatarImg.alt = role.name;
 
             const nameInput = roleItem.querySelector('.role-name-input');
@@ -204,7 +218,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const avatarImg = document.createElement('img');
         avatarImg.classList.add('message-avatar');
-        avatarImg.src = senderRole.avatar || `https://dummyimage.com/30x30/000/fff&text=${senderRole.name.substring(0, 1)}`;
+        if (senderRole.avatar) {
+            avatarImg.src = senderRole.avatar;
+            avatarImg.textContent = '';
+            avatarImg.style.backgroundColor = '';
+            avatarImg.style.color = '';
+            avatarImg.style.textAlign = '';
+            avatarImg.style.lineHeight = '';
+        } else {
+            avatarImg.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'; // 透明1x1像素GIF
+            avatarImg.textContent = senderRole.name.substring(0, 1); // 显示首字母
+            avatarImg.style.backgroundColor = '#ccc'; // 灰色背景
+            avatarImg.style.color = '#fff';
+            avatarImg.style.textAlign = 'center';
+            avatarImg.style.lineHeight = '30px';
+        }
         avatarImg.alt = senderRole.name;
 
         const bubbleDiv = document.createElement('div');
@@ -229,7 +257,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (senderRole) {
                 const avatarImg = messageDiv.querySelector('.message-avatar');
                 if (avatarImg) {
-                    avatarImg.src = senderRole.avatar || `https://dummyimage.com/30x30/000/fff&text=${senderRole.name.substring(0, 1)}`;
+                    if (senderRole.avatar) {
+                        avatarImg.src = senderRole.avatar;
+                        avatarImg.textContent = '';
+                        avatarImg.style.backgroundColor = '';
+                        avatarImg.style.color = '';
+                        avatarImg.style.textAlign = '';
+                        avatarImg.style.lineHeight = '';
+                    } else {
+                        avatarImg.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'; // 透明1x1像素GIF
+                        avatarImg.textContent = senderRole.name.substring(0, 1);
+                        avatarImg.style.backgroundColor = '#ccc';
+                        avatarImg.style.color = '#fff';
+                        avatarImg.style.textAlign = 'center';
+                        avatarImg.style.lineHeight = '30px';
+                    }
                     avatarImg.alt = senderRole.name;
                 }
             }
@@ -250,8 +292,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 初始加载默认角色
-    addRole('自己', `https://dummyimage.com/30x30/FF5733/FFFFFF&text=我`); // 默认“自己”
-    addRole('朋友', `https://dummyimage.com/30x30/3366FF/FFFFFF&text=友`); // 默认“朋友”
+    addRole('自己', ''); // 默认“自己”，不带默认头像
+    addRole('朋友', ''); // 默认“朋友”，不带默认头像
     selectSender(roles[0].id); // 默认选择第一个角色为发送者
     // updateChatCount 不再需要
 
